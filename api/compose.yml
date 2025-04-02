@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  postgresql:
+    image: 'bitnami/postgresql:latest'
+    container_name: pixiodb
+    environment:
+      - POSTGRESQL_USERNAME=root
+      - POSTGRESQL_PASSWORD=root
+      - POSTGRESQL_DATABASE=pixiowallet
+    ports:
+      - '5432:5432'
