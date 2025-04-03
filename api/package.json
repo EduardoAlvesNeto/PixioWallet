@@ -11,19 +11,23 @@
   "license": "ISC",
   "packageManager": "pnpm@10.6.5",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.1",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "bcrypt",
       "esbuild"
     ]
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
-    "prisma": "^6.5.0"
+    "prisma": "^6.5.0",
+    "zod": "^3.24.2"
   }
 }
