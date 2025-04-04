@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import AccountController from "../controllers/AccountController";
+import { accountController } from "../utils/dependencies";
 
 const router = Router();
 
-router.post('/', AccountController.store)
+router.post('/', accountController.store.bind(accountController))
 
 export default router;

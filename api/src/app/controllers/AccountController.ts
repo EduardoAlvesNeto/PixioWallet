@@ -1,11 +1,12 @@
 import type { Request, Response, NextFunction } from "express";
 
 import { AccountSchema, AccountType } from "@/app/schemas/AccountSchema";
-import AccountRepository from "../repositories/AccountRepository";
 import CreateAccountUsecase from "@/app/usecases/Account/CreateAccountUsecase";
 import { BadRequestException } from "../utils/Exceptions";
 
 class AccountController {
+    constructor(private createAccountUseCase: CreateAccountUsecase) { }
+
     async store(req: Request, res: Response, next: NextFunction): Promise<void> {
         const { name, document, email, password }: AccountType = req.body;
 
@@ -16,10 +17,7 @@ class AccountController {
                 throw new BadRequestException(checkBody.error.errors[0].message)
             }
 
-            const repo = new AccountRepository();
-            const createAccount = new CreateAccountUsecase(repo);
-
-            await createAccount.execute({ name, document, email, password })
+            await this.createAccountUseCase.execute({ name, document, email, password })
 
             res.sendStatus(201)
         } catch (err) {
@@ -28,4 +26,4 @@ class AccountController {
     }
 }
 
-export default new AccountController();
+export default AccountController;

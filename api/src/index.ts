@@ -1,4 +1,5 @@
 import express from 'express';
+import dotenv from 'dotenv/config';
 
 import prisma from '@/app/database';
 import routes from '@/app/routes/routes'
